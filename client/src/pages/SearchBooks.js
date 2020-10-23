@@ -3,7 +3,7 @@ import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'reac
 
 import { useMutation } from '@apollo/react-hooks';
 import { SAVE_BOOK } from '../utils/mutations';
-import { QUERY_ME } from '../utils/queries';
+import { GET_USER } from '../utils/queries';
 
 import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
@@ -26,9 +26,9 @@ const SearchBooks = () => {
 
   const [ saveBook ] = useMutation(SAVE_BOOK, {
     update(cache, { data: { saveBook } }) {
-      const { me } = cache.readQuery({ query: QUERY_ME });
+      const { me } = cache.readQuery({ query: GET_USER });
       cache.writeQuery({
-        query: QUERY_ME,
+        query: GET_USER,
         data: { me: { ...me, savedBooks: [...me.savedBooks, saveBook]}}
       })
 

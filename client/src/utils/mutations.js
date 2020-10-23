@@ -1,64 +1,82 @@
 import gql from 'graphql-tag';
 
-export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        username
-        savedBooks {
-            bookId
-            authors
-            description
-            title
-            image
-            link
+export const ADD_USER = gql`
+    mutation addUser($username: String!, $email: String!, $password: String!) {
+        addUser(username: $username, email: $email, password: $password) {
+        token
+            user {
+                _id
+                username
+                email
+                bookCount
+                savedBooks {
+                    bookId
+                    title
+                    description
+                    authors
+                    image
+                    link
+                }
+            }
         }
-      }
     }
-  }
 `;
 
-export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
-      token
-      user {
-        username
-        email
-        bookCount
-        savedBooks {
-          title
-        }
-      }
-    }
-  }
+export const LOGIN_USER = gql`
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+        token
+            user {
+                _id
+                username
+                email
+                bookCount
+                savedBooks {
+                    bookId
+                    title
+                    description
+                    authors
+                    link
+                    image
+         }
+       }
+     }
+   }
 `;
 
 export const SAVE_BOOK = gql`
-  mutation saveBook($book: bookInput!) {
-      saveBook(book: $book) {
-          _id
-          username
-          savedBooks {
-              authors
-              description
-              title
-              bookId
-              image
-              link
-          }
-      }
-  }
+    mutation saveBook($input: bookInput!) {
+        saveBook(input: $input) {
+            _id
+            username
+            email
+            savedBooks {
+                bookId
+                authors
+                image
+                description
+                title
+                link
+            }
+        }
+    }
 `;
 
 export const REMOVE_BOOK = gql`
-  mutation removeBOOK($bookId: String!) {
-    removeBook(bookId: $bookId) {
-        _id
-        savedBooks {
-            bookId
+    mutation removeBook($bookId: String!) {
+        removeBook(bookId: $bookId) {
+            _id
+            username
+            email
+            bookCount
+            savedBooks {
+                bookId
+                authors
+                image
+                description
+                title
+                link
+            }
         }
     }
-  }
 `;
