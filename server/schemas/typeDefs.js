@@ -3,6 +3,10 @@ const { gql } = require('apollo-server-express');
 
 // create our typeDefs
 const typeDefs = gql`
+type Auth {
+    token: ID!
+    user: User
+}
 
 type Book {
     bookId: String
@@ -39,11 +43,6 @@ input BookInput {
     title: String
     image: String
     link: String
-}
-
-type Auth {
-    token: ID!
-    user: User
 }
 
 `;
