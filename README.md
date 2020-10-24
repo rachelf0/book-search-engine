@@ -71,7 +71,7 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 Sign up via the sign up link and create your account. Begin searching for books of your choice and they will be saved to your personal account.
 
 ## Testing
-No testing is set up at this moment. Tested externally through Insomnia Core.
+No testing is set up at this moment.
 
 ## Contribution
 This README was generated with ❤️ by:
